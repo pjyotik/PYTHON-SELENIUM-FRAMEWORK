@@ -4,16 +4,18 @@ from pathlib import Path
 
 from src import settings
 
-ROOT_DIR = os.path.dirname(Path(__file__).parent.parent.parent)
+ROOT_DIR = os.path.dirname(Path(__file__).parent.parent)
 LOG_DIR = os.path.join(ROOT_DIR, "test-output", "logs")
-print("LOG FILE PATH : " + LOG_DIR + settings.LOG_FILE)
+print("LOG FILE PATH : " + LOG_DIR)
 
 
 class LogGen:
+
     @staticmethod
     def loggen():
-        logging.basicConfig(filename=LOG_DIR + settings.LOG_FILE,
-                            format='%(asctime)s: %(levelname)s: %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
+        logging.basicConfig(filename=LOG_DIR + '\\automation.log',
+                            level=logging.INFO,
+                            format='%(asctime)s: %(levelname)s: %(message)s',
+                            datefmt='%m/%d/%Y %I:%M:%S %p')
         logger = logging.getLogger()
-        logger.setLevel(logging.INFO)
         return logger

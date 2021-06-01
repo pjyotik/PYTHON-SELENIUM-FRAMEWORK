@@ -1,30 +1,35 @@
-### Python Selenium Web Framework ###
+# Python Selenium Web Framework 
 
 
-Steps to Setup the Framework in Local :
+Setup the Framework in Local :
 
 1. Create a Virtual Environment (Win):
-   
-   - Follow the below Link:
-     https://www.liquidweb.com/kb/how-to-setup-a-python-virtual-environment-on-windows-10/
+     
+     $ virtualenv --python C:\Users\prano\AppData\Local\Programs\Python\Python38\python.exe venv
+     
+     $ .\venv\Scripts\activate
+    
+     $ deactivate       [Command to deactivate the Virtual environment]
+     
 
-2. Create Project Directory
-
-3. Install packages into virtual env and Run below command:
+2. Install packages into virtual env and Run below command:
    
    - $ pip freeze > requirements.txt  [ requirement.txt has all the relevant packages installed ]
    
-4. Rules to Write Test cases.
+3. Rules to Write Test cases.
  
     - FileName should start or end with test 
-    [example : test_login or login_test]
+        [example : test_login or login_test]
+    
     - Class name and methods names should also follow the same naming convention, camelcase in case of Class Name 
-    [example: def test_sample1() ] and [example: class BaseTest]
+        [example: def test_sample1() ] and [example: class BaseTest]
 
 
 5. Command to Run:
     
-    $ pytest Tests/nopcommerce/<TEST-CASE-NAME> -s -v -n=2 --html=reports/AutomationReport.html --browser=chrome
+    $ pytest src/tests/NopCommerce/test_login.py -s -v -n=2 --html=reports/AutomationReport.html --browser=chrome
+    
+    pytest src/tests/SwagLabs -sv -n=2 --html=test-output/reports/AutomationReport.html --browser=chrome
     
     $ pytest Tests/nopcommerce/<TEST-CASE-NAME> -sv -m "sanity" --html=reports/AutomationReport.html --browser=chrome
     

@@ -1,10 +1,15 @@
 import time
+import os
+from pathlib import Path
 
 from src import settings
 from src.pages.SwagLabs.HomePage import HomePage
 from src.pages.SwagLabs.LoginPage import LoginPage
 from src.tests.base_test import BaseTest
 from src.util.Logger import LogGen
+
+ROOT_DIR = os.path.dirname(Path(__file__).parent.parent.parent)
+SCREENSHOTS_DIR = os.path.join(ROOT_DIR, "test-output", "screenshots")
 
 
 class TestLogin(BaseTest):
@@ -24,7 +29,7 @@ class TestLogin(BaseTest):
         if actual_title == settings.SAUCE_DEMO_APP_TITLE:
             assert True
         else:
-            driver.save_screenshot("./test-output/screenshots/" + "SauceLabs_Valid_Login.png")
+            driver.save_screenshot(SCREENSHOTS_DIR + "/SauceLabs_Valid_Login.png")
             self.logger.info("***********************************************************")
             assert False
 
@@ -40,7 +45,6 @@ class TestLogin(BaseTest):
         if error_text == settings.SAUCE_DEMO_APP_ERROR_MESSAGE:
             assert True
         else:
-            driver.save_screenshot("./test-output/screenshots/" + "SauceLabs_Valid_Login.png")
+            driver.save_screenshot(SCREENSHOTS_DIR + "SauceLabs_Valid_Login.png")
             self.logger.info("***********************************************************")
             assert False
-
